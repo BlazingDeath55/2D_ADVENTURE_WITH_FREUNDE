@@ -22,4 +22,7 @@ public class Player_Motion : MonoBehaviour {
 	void Update () {
         vecUpdate();
 	}
+    void FixedUpdate() {
+        GetComponent<Rigidbody>().velocity = v;
+    }
 }

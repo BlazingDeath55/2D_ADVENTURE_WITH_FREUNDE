@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_Motion : MonoBehaviour {
     
     public Vector3 v;
+    public float speed;
     float x, y;
 
 	// Use this for initialization
@@ -15,8 +16,8 @@ public class Player_Motion : MonoBehaviour {
 	void vecUpdate () {
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
-        v = new Vector3(x,y,0);
-        v = v.normalized;
+        v = new Vector3(x,0,y);
+        v = speed*v.normalized;
     }
 	// Update is called once per frame
 	void Update () {

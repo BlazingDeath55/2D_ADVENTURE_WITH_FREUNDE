@@ -8,7 +8,7 @@ public class Player_Motion : MonoBehaviour {
     public float speed;
     float x, y;
     Animator a;
-    float mag;
+    float mag, lx;
 
 	// Use this for initialization
 	void Start () {
@@ -28,10 +28,14 @@ public class Player_Motion : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         vecUpdate();
+        if(v.x != lx) {
+            a.SetBool("Left",(v.x < 0));
+        }
         if(v.magnitude!=mag) {
             a.SetFloat("Speed", v.magnitude);
         }
         mag = v.magnitude;
+        lx = v.x;
 	}
     //Use for Physics, called once per frame
     void FixedUpdate() {

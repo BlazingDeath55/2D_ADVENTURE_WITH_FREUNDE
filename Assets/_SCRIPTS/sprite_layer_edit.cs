@@ -6,7 +6,7 @@ public class sprite_layer_edit : MonoBehaviour {
 
     // Use this for initialization
 
-    public GameObject world;
+    public GameObject[] areas;
     SpriteRenderer[] sr;
     Transform player;
 
@@ -14,7 +14,10 @@ public class sprite_layer_edit : MonoBehaviour {
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        sr = world.GetComponentsInChildren<SpriteRenderer>();
+        foreach (GameObject world in areas)
+        {
+            sr = world.GetComponentsInChildren<SpriteRenderer>();
+        }
     }
 
 	// Update is called once per frame

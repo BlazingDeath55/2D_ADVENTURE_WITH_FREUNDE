@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_Motion : MonoBehaviour {
     
     public Vector3 v;
-    public float speed;
+    public float speed, jump;
     float x, y;
     Animator a;
     float mag, lx;
@@ -36,7 +36,14 @@ public class Player_Motion : MonoBehaviour {
         }
         mag = v.magnitude;
         lx = v.x;
-	}
+        if(Input.GetAxis("Jump")>0&&GetComponent<CharacterController>().isGrounded)
+        {
+            GetComponent<Rigidbody>().AddForce(0f, jump, 0f);
+        }
+    }
+
+
+
     //Use for Physics, called once per frame
     void FixedUpdate() {
         GetComponent<Rigidbody>().velocity = v;
